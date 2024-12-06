@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainMenuFragment">
+
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.geograph.ical.quiz.game.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_gameFragment_to_endFragment"
+            app:destination="@id/endFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.geograph.ical.quiz.game.MainMenuFragment"
+        android:label="MainMenuFragment"
+        tools:layout="@layout/fragment_main_menu">
+        <action
+            android:id="@+id/action_mainMenuFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_setFragment"
+            app:destination="@id/setFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.geograph.ical.quiz.game.EndFragment"
+        android:label="EndFragment" >
+        <action
+            android:id="@+id/action_endFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+        <argument
+            android:name="count"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/setFragment"
+        android:name="com.geograph.ical.quiz.game.SetFragment"
+        android:label="SetFragment" >
+        <argument
+            android:name="musicOn"
+            app:argType="boolean" />
+        <argument
+            android:name="soundsOn"
+            app:argType="boolean" />
+    </fragment>
+</navigation>
