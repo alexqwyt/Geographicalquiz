@@ -26,7 +26,10 @@ workflows:
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
       - name: Build Android release
         script: |
-          ./gradlew bundleRelease
+          echo "Making gradlew executable..."
+          chmod +x gradlew  # Добавляем права на выполнение для gradlew
+          echo "Building Android release bundle..."
+          ./gradlew bundleRelease  # Собираем релизный AAB файл
 
     artifacts:
       - android/app/build/outputs/apk/release/*.apk
