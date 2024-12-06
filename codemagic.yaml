@@ -33,7 +33,7 @@ workflows:
 
     artifacts:
       - android/app/build/outputs/apk/release/*.apk
-      - android/app/build/outputs/bundle/release/*.aab
+      - android/app/release/*.aab
     publishing:
       email:
         recipients:
