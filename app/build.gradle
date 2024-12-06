@@ -5,25 +5,35 @@ plugins {
 }
 
 android {
-    namespace 'com.geograph.ical.quiz'
-    compileSdk 34
+    namespace 'com.geograph.ical.qu'
+    compileSdk 35
 
     defaultConfig {
-        applicationId "com.geograph.ical.quiz"
+        applicationId "com.geograph.ical.qu"
         minSdk 24
-        targetSdk 34
-        versionCode 2
-        versionName "2.0"
+        //noinspection EditedTargetSdkVersion
+        targetSdk 35
+        versionCode 3
+        versionName "3.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    signingConfigs {
+        if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
+            storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
+            storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
+            keyAlias System.getenv()["CM_KEY_ALIAS"]
+            keyPassword System.getenv()["CM_KEY_PASSWORD"]
+        }
+    }
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             proguardFiles fileTree('proguard').asList().toArray()
+            signingConfig signingConfigs.release
+
         }
     }
     compileOptions {

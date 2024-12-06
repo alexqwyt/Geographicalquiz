@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.geograph.ical.quiz.game.GameFragment"
+        android:name="com.geograph.ical.qu.game.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainMenuFragment"
-        android:name="com.geograph.ical.quiz.game.MainMenuFragment"
+        android:name="com.geograph.ical.qu.game.MainMenuFragment"
         android:label="MainMenuFragment"
         tools:layout="@layout/fragment_main_menu">
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/endFragment"
-        android:name="com.geograph.ical.quiz.game.EndFragment"
+        android:name="com.geograph.ical.qu.game.EndFragment"
         android:label="EndFragment" >
         <action
             android:id="@+id/action_endFragment_to_mainMenuFragment"
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/setFragment"
-        android:name="com.geograph.ical.quiz.game.SetFragment"
+        android:name="com.geograph.ical.qu.game.SetFragment"
         android:label="SetFragment" >
         <argument
             android:name="musicOn"
