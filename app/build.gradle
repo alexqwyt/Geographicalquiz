@@ -19,19 +19,27 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
-        if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
-            storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
-            storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
-            keyAlias System.getenv()["CM_KEY_ALIAS"]
-            keyPassword System.getenv()["CM_KEY_PASSWORD"]
+        release {
+            if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
+                storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
+                storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
+                keyAlias System.getenv()["CM_KEY_ALIAS"]
+                keyPassword System.getenv()["CM_KEY_PASSWORD"]
+            } else {
+                keyAlias = "key0"               // Замените на ваш key alias
+                keyPassword = "Geographical quiz"         // Замените на ваш key password
+                storeFile = file("key1.jks") // Укажите путь к вашему keystore файлу
+                storePassword = "Geographical quiz"     // Замените на ваш store password
+            }
         }
+
     }
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
+            signingConfig signingConfigs.release
 
-          
 
         }
     }
@@ -42,33 +50,30 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    viewBinding{
+    viewBinding {
         enabled = true
     }
 
 
+    dependencies {
 
-}
+        implementation 'androidx.core:core-ktx:1.8.0'
+        implementation 'androidx.appcompat:appcompat:1.6.1'
+        implementation 'com.google.android.material:material:1.9.0'
+        implementation 'androidx.navigation:navigation-fragment-ktx:2.7.2'
+        implementation 'androidx.navigation:navigation-ui-ktx:2.7.2'
+        implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.2'
+        implementation 'com.google.firebase:firebase-analytics-ktx:21.2.0'
 
-dependencies {
-
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.7.2'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.2'
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.0'
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+        testImplementation 'junit:junit:4.13.2'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
 
-    implementation("com.onesignal:OneSignal:4.8.5")
-    implementation("com.facebook.android:facebook-android-sdk:16.0.0")
-    implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
+        implementation("com.onesignal:OneSignal:4.8.5")
+        implementation("com.facebook.android:facebook-android-sdk:16.0.0")
+        implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
 
 
-
+    }
 }
