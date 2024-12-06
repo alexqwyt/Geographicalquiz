@@ -5,7 +5,6 @@ workflows:
     max_build_duration: 60
     environment:
       vars:
-        JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
         PACKAGE_NAME: "com.geograph.ical.qu"
       android_signing:
         - key1
