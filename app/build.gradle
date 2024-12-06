@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'com.geograph.ical.qu'
-    compileSdk 35
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.geograph.ical.qu"
