@@ -32,8 +32,8 @@ workflows:
           ./gradlew bundleRelease  # Собираем релизный AAB файл
 
     artifacts:
-      - android/app/release/*.apk
-      - android/app/release/*.aab
+      - app/release/*.apk
+      - app/release/*.aab
     publishing:
       email:
         recipients:
