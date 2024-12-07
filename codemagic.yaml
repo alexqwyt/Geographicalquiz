@@ -33,6 +33,7 @@ workflows:
 
     artifacts:
       - app/release/*.aab
+      - app/build/outputs/**/*.aab
     publishing:
       email:
         recipients:
